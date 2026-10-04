@@ -37,6 +37,5 @@ and region. To use this elsewhere, change them in `ec2.tf`.
 
 - SSH is open to `0.0.0.0/0`. It should be restricted to my own IP.
 - Terraform state is stored locally. Plan: move it to an S3 backend.
-- Hardcoded values should become variables (`variables.tf`, `outputs.tf`).
 - Add a Docker Compose setup for the nginx container.
 - Add a GitHub Actions workflow to run `terraform validate` and `plan`.
