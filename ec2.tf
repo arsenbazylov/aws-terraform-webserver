@@ -1,7 +1,7 @@
 resource "aws_instance" "web_server" {
-  ami                    = "ami-0aba19e56f3eaec05"
-  instance_type          = "t3.micro"
-  key_name               = "my-first-key"
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.web_server_sg.id]
 
   tags = {
