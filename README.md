@@ -1,5 +1,7 @@
 # AWS Web Server: Infrastructure as Code with Terraform
 
+![Terraform Check](https://github.com/arsenbazylov/aws-terraform-webserver/actions/workflows/terraform-check.yml/badge.svg)
+
 Terraform configuration that describes a small web server on AWS.
 Part of my hands-on path into Cloud Engineering.
 
@@ -39,4 +41,4 @@ and region. To use this elsewhere, change them in `ec2.tf`.
 
 - SSH is open to `0.0.0.0/0`. It should be restricted to my own IP.
 - Terraform state is stored locally. Plan: move it to an S3 backend.
-- Add a GitHub Actions workflow to run `terraform validate` and `plan`.
+- GitHub Actions runs terraform fmt -check and terraform validate on every push
