@@ -7,9 +7,13 @@ resource "aws_instance" "docker_test" {
   user_data = <<-EOF
     #!/bin/bash
     apt-get update -y
-    apt-get install -y docker.io
+    apt-get install -y docker.io docker-compose-v2
     systemctl enable --now docker
-    docker run -d --name my-nginx-container --restart unless-stopped -p 80:80 nginx
+    mkdir -p /opt/app
+    cat > /opt/app/docker-compose.yml << 'COMPOSE'
+    ${indent(4, file("${path.module}/docker/docker-compose.yml"))}
+    COMPOSE
+    cd /opt/app && docker compose up -d
   EOF
 
   tags = {
