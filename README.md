@@ -8,6 +8,8 @@ Part of my hands-on path into Cloud Engineering.
 - **EC2 instance** (`t3.micro`, Ubuntu) in `eu-north-1` (Stockholm)
 - **Security group** allowing SSH (22), HTTP (80) and an app port (8080)
 - **Elastic IP** attached to the instance
+- **Test server** (`docker_server.tf`) that installs Docker and starts nginx via
+  Docker Compose on first boot, using `user_data` and `docker/docker-compose.yml`
 
 ## How it was built
 
@@ -37,5 +39,4 @@ and region. To use this elsewhere, change them in `ec2.tf`.
 
 - SSH is open to `0.0.0.0/0`. It should be restricted to my own IP.
 - Terraform state is stored locally. Plan: move it to an S3 backend.
-- Add a Docker Compose setup for the nginx container.
 - Add a GitHub Actions workflow to run `terraform validate` and `plan`.
