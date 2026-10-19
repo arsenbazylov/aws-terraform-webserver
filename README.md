@@ -32,6 +32,7 @@ After fixing the differences between the code and the real resources,
 terraform init
 terraform plan
 terraform apply
+Copy terraform.tfvars.example to terraform.tfvars and set ypur own IP
 ```
 
 Note: the AMI ID and key pair name are currently hardcoded for my account
@@ -39,6 +40,5 @@ and region. To use this elsewhere, change them in `ec2.tf`.
 
 ## Known limitations and next steps
 
-- SSH is open to `0.0.0.0/0`. It should be restricted to my own IP.
 - Terraform state is stored locally. Plan: move it to an S3 backend.
 - GitHub Actions runs terraform fmt -check and terraform validate on every push
