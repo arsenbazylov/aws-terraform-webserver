@@ -10,8 +10,8 @@ Part of my hands-on path into Cloud Engineering.
 - **EC2 instance** (`t3.micro`, Ubuntu) in `eu-north-1` (Stockholm)
 - **Security group** allowing SSH (22), HTTP (80) and an app port (8080)
 - **Elastic IP** attached to the instance
-- **Test server** (`docker_server.tf`) that installs Docker and starts nginx via
-  Docker Compose on first boot, using `user_data` and `docker/docker-compose.yml`
+- **Test server** (`examples/docker-test/`) that installs Docker and starts nginx via
+  Docker Compose on first boot, using `user_data` and `examples/docker-test/docker/docker-compose.yml`
 
 ## How it was built
 
