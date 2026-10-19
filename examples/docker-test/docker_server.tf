@@ -1,8 +1,13 @@
+# Uses the security group created by the root configuration
+data "aws_security_group" "web_server" {
+  name = "launch-wizard-1"
+}
+
 resource "aws_instance" "docker_test" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
   key_name               = var.key_name
-  vpc_security_group_ids = [aws_security_group.web_server_sg.id]
+  vpc_security_group_ids = [data.aws_security_group.web_server.id]
 
   user_data = <<-EOF
     #!/bin/bash

@@ -18,10 +18,18 @@ jobs:
           terraform_version: 1.9.5
 
       - name: Check formatting
-        run: terraform fmt -check
+        run: terraform fmt -check -recursive
 
-      - name: Init (no backend, no AWS access)
+      - name: Init (root)
         run: terraform init -backend=false
 
-      - name: Validate
+      - name: Validate (root)
         run: terraform validate
+
+      - name: Init (docker-test example)
+        run: terraform init -backend=false
+        working-directory: examples/docker-test
+
+      - name: Validate (docker-test example)
+        run: terraform validate
+        working-directory: examples/docker-test

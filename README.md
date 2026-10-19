@@ -42,3 +42,10 @@ and region. To use this elsewhere, change them in `ec2.tf`.
 
 - State is stored in S3 (versioned, encrypted, public access blocked). The bucket was created manually with AWS CLI. Terraform 1.9 has no native S3 locking, so this setup is for a single user
 - GitHub Actions runs terraform fmt -check and terraform validate on every push
+
+## Examples
+
+`examples/docker-test/` is a separate Terraform project with its own state.
+It starts a temporary EC2 instance that installs Docker and runs nginx with
+Docker Compose on first boot. It reuses the security group from the main
+project, so apply the main project first. Destroy the example when done.
