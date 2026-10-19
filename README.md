@@ -40,5 +40,5 @@ and region. To use this elsewhere, change them in `ec2.tf`.
 
 ## Known limitations and next steps
 
-- Terraform state is stored locally. Plan: move it to an S3 backend.
+- State is stored in S3 (versioned, encrypted, public access blocked). The bucket was created manually with AWS CLI. Terraform 1.9 has no native S3 locking, so this setup is for a single user
 - GitHub Actions runs terraform fmt -check and terraform validate on every push
