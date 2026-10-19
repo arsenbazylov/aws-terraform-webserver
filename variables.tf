@@ -21,3 +21,8 @@ variable "key_name" {
   type        = string
   default     = "my-first-key"
 }
+
+variable "allowed_ssh_cidr" {
+  description = "CIDR block allowed to connect via SSH, e.g. 203.0.113.5/32"
+  type        = string
+}
