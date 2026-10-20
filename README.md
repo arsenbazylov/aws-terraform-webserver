@@ -32,16 +32,17 @@ After fixing the differences between the code and the real resources,
 terraform init
 terraform plan
 terraform apply
-Copy terraform.tfvars.example to terraform.tfvars and set ypur own IP
 ```
+Copy terraform.tfvars.example to terraform.tfvars and set your own IP
 
 Note: the AMI ID and key pair name are currently hardcoded for my account
 and region. To use this elsewhere, change them in `ec2.tf`.
 
-## Known limitations and next steps
+## Notes and next steps
 
 - State is stored in S3 (versioned, encrypted, public access blocked). The bucket was created manually with AWS CLI. Terraform 1.9 has no native S3 locking, so this setup is for a single user
-- GitHub Actions runs terraform fmt -check and terraform validate on every push
+- GitHub Actions runs terraform fmt -check and terraform validate on every push, and terraform plan on pushes to main (read-only IAM user, credentials in GitHub Secrets, only the plan summary is printed).
+- Next step: replace stored AWS keys with GitHub OIDC (short-lived credentials).
 
 ## Examples
 
@@ -49,3 +50,4 @@ and region. To use this elsewhere, change them in `ec2.tf`.
 It starts a temporary EC2 instance that installs Docker and runs nginx with
 Docker Compose on first boot. It reuses the security group from the main
 project, so apply the main project first. Destroy the example when done.
+
